@@ -1,0 +1,22 @@
+<!-- Attention suscribe caché ici : donc appel de l'api  -->
+ <!-- @let peopleResult = people$ | async;   -->
+
+ @let peopleResult = peopleSignal$$();  
+
+    <table>
+        <tr>
+            <td>
+                filter:
+            </td>
+<select>
+    <!-- @for (item of peopleResult?.results; track item.uid) { -->
+    @for (item of peopleResult; track item.id) {
+        <option value="{{item.id}}" >
+            {{item.surname}}
+        </option>
+    }
+</select>
+            <td>
+            </td>
+        </tr>
+    </table>

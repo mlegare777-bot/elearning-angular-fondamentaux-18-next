@@ -1,0 +1,20 @@
+
+--Pour partir le serveur (il faut dabord ce deplacer dans le workspace)
+	npx nx serve {nom_projet}
+
+--Mais la commande precedente peut etre configurer dans le fichier "{workspace}\package.json" comme ceci:
+	...
+
+	"scripts": {
+	"start": "npx nx serve {nom_projet}"
+	},
+	
+	...
+-- ce qui permet de partir le serveur avec la commande standard
+   npm start 
+
+
+
+--Pour gerer les environnements DEV et PRO
+  npx nx g environments
+

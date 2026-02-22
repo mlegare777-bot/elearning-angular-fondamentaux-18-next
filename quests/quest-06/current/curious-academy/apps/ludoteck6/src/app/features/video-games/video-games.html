@@ -1,0 +1,16 @@
+@if(list.length === 0) {
+    <p>Aucun jeux videos</p>
+}
+@else {
+    <!-- <app-table-video-games [items]="list" [title]="'Voici la liste des video-games completes'"></app-table-video-games> -->
+    <app-table-video-games 
+        title="Voici la liste des video-games partielles" 
+        [items]="list" 
+        (askToRemoveOneLement)="toRemoveOneVideoGame($event)"
+        (askToRemoveItem)="toRemoveVideoGameItem($event)"
+
+    />
+}
+
+
+<app-add-video-game></app-add-video-game>
