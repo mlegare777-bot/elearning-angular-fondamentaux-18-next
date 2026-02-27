@@ -18,3 +18,7 @@
 --Pour gerer les environnements DEV et PRO
   npx nx g environments
 
+
+
+--Pour ajouter les widgets Bootstrap
+ npx nx add @ng-bootstrap/ng-bootstrap
