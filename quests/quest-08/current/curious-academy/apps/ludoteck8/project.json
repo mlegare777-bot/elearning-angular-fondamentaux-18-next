@@ -8,7 +8,9 @@
   "targets": {
     "build": {
       "executor": "@angular/build:application",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/ludoteck8",
         "browser": "apps/ludoteck8/src/main.ts",
@@ -20,8 +22,10 @@
           }
         ],
         "styles": [
+          "apps/ludoteck8/src/material-theme.scss",
           "apps/ludoteck8/src/styles.css",
-        "apps/ludoteck8/src/styles2.css"]
+          "apps/ludoteck8/src/styles2.css"
+        ]
       },
       "configurations": {
         "production": {
