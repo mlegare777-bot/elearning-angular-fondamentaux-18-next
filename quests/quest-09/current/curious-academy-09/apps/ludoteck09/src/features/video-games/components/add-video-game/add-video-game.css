@@ -1,0 +1,17 @@
+table {
+    background-color: yellow;
+}
+
+input.ng-invalid {
+    border: 1px red solid;
+}
+
+input.ng-valid {
+    border: 1px green solid;
+}
+
+h1 {
+font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+color: gray;
+font-size: 2rem;
+}
