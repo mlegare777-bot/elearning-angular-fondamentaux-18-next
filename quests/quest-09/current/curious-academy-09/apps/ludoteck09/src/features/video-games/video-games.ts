@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { VideoGame, VideoGames } from './modele/video-game';
 import { TableVideoGames } from './components/table-video-games/table-video-games';
 import { FiltersVideoGames } from "./components/filters-video-games/filters-video-games";
@@ -11,7 +11,12 @@ import { AddVideoGame } from './components/add-video-game/add-video-game';
   styleUrl: './video-games.css',
   encapsulation: ViewEncapsulation.None
 })
-export class ListVideoGames {
+export class ListVideoGames implements OnInit, OnDestroy {
+
+  ngOnInit(): void {
+    console.info('ListVideoGames :Init');
+  }
+
   //  listTitle = 'Voici la liste des video-games';
   list: VideoGames = [
     {
@@ -55,5 +60,9 @@ export class ListVideoGames {
 
   toRemoveVideoGameItem(item: VideoGame): void {
     this.list = this.list.filter((currentItem) => currentItem.id != item.id);
+  }
+
+  ngOnDestroy(): void {
+    console.info('ListVideoGames : Destoy');
   }
 }

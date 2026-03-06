@@ -20,3 +20,10 @@
 
 --POur installer material,cdk et animations
 npm install @angular/material @angular/cdk @angular/animations
+
+
+--Pour creer un component:
+ -- Aller dans "/src" 
+npx nx g c shared/menus/main-menu
+ -- √ Which generator would you like to use? · @schematics/angular:component 
+  -- Note : @schematics/angular:component is The default Angular CLI generator
