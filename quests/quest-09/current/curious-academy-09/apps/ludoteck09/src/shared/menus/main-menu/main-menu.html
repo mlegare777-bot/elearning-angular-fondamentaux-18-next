@@ -1,11 +1,11 @@
-<ul>
+<!-- <ul>
   <li>
       <a routerLink="/">Accueil</a>
   </li>
   <li>
       <a routerLink="jeux-videos">Mes jeux videos</a>
   </li>
-</ul>
+</ul> -->
 
 
 
@@ -15,16 +15,13 @@
   <mat-icon>more_vert</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
-  <button mat-menu-item>
-    <mat-icon>dialpad</mat-icon>
-    <span>Redial</span>
+  <button mat-menu-item (click)="goToUrl('/')">
+    <mat-icon>home</mat-icon>
+    <span>Accueil</span>
   </button>
-  <button mat-menu-item disabled>
-    <mat-icon>voicemail</mat-icon>
-    <span>Check voice mail</span>
+  <button mat-menu-item (click)="goToUrl('jeux-videos')">
+    <mat-icon>gamepad</mat-icon>
+    <span>Mes jeux videos</span>
   </button>
-  <button mat-menu-item>
-    <mat-icon>notifications_off</mat-icon>
-    <span>Disable alerts</span>
-  </button>
+
 </mat-menu>
