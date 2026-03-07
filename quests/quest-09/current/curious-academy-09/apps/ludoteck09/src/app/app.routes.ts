@@ -1,16 +1,14 @@
-import { Route } from '@angular/router';
-import { ListVideoGames } from '../features/video-games/video-games';
-import { EditVideoGame } from '../features/video-games/components/edit-video-game/edit-video-game';
+import { Routes } from '@angular/router';
 import { NotFound } from '../shared/errors/not-found/not-found';
+import { videoGamesRoutes } from '../features/video-games/video-games.routes';
 
-export const appRoutes: Route[] = [
+export const appRoutes: Routes = [
+
+
+    //    ...videoGamesRoutes,
     {
-        path: 'jeux-videos',
-        component: ListVideoGames
-    },
-    {
-        path: 'jeux-videos/:id',
-        component: EditVideoGame
+        path: '',
+        children: videoGamesRoutes
     },
     {
         path: '**',
