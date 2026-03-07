@@ -1,6 +1,7 @@
 import { Route } from '@angular/router';
 import { ListVideoGames } from '../features/video-games/video-games';
 import { EditVideoGame } from '../features/video-games/components/edit-video-game/edit-video-game';
+import { NotFound } from '../shared/errors/not-found/not-found';
 
 export const appRoutes: Route[] = [
     {
@@ -12,7 +13,7 @@ export const appRoutes: Route[] = [
         component: EditVideoGame
     },
     {
-        path: 'jeux-videos/:id',
-        component: EditVideoGame
+        path: '**',
+        component: NotFound
     }
 ];
