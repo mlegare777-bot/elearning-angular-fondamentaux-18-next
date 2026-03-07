@@ -10,6 +10,9 @@ export const appRoutes: Route[] = [
     {
         path: 'jeux-videos/:id',
         component: EditVideoGame
+    },
+    {
+        path: 'jeux-videos/:id',
+        component: EditVideoGame
     }
-
 ];
