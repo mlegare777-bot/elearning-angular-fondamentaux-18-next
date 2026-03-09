@@ -12,3 +12,4 @@ Ok to proceed? (y) y
 √ Do you want to enable Server-Side Rendering (SSR) and Static Site Generation (SSG/Prerendering)? · No
 √ Which unit test runner would you like to use? · none
 √ Test runner to use for end to end (E2E) tests · cypress
+√ Which CI provider would you like to use? · github

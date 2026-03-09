@@ -15,11 +15,14 @@
 
 
 
---Pour gerer les environnements DEV et PRO
-  npx nx g environments
 
 --POur installer material,cdk et animations
 npm install @angular/material @angular/cdk @angular/animations
+
+
+
+--POur installer bootstrap
+npm i  bootstrap    
 
 
 --Pour creer un component:
@@ -27,3 +30,9 @@ npm install @angular/material @angular/cdk @angular/animations
 npx nx g c shared/menus/main-menu
  -- √ Which generator would you like to use? · @schematics/angular:component 
   -- Note : @schematics/angular:component is The default Angular CLI generator
+  
+  
+  
+
+--Pour gerer les environnements DEV et PRO
+  npx nx g environments  
