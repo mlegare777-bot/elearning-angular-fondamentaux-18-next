@@ -26,14 +26,16 @@ export class EditVideoGame implements OnInit {
 
 
   ngOnInit(): void {
-    console.info(this.route.snapshot.params['id']);
+    console.info('');//this.route.snapshot.params['id']);
 
 
-    this.route.params.subscribe({
-      next: paramsItem => {
-        console.log(paramsItem['id']);
-      }
-    });
+    //   this.route.params.subscribe({
+    //     next: paramsItem => {
+    //       console.log(paramsItem['id']);
+    //     }
+    //   }
+    // );
+
   }
 
 }

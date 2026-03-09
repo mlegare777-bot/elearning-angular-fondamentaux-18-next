@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { NotFound } from '../shared/errors/not-found/not-found';
-import { statisitcsRoutes } from '../features/statistics/components/list-stats/statistics.routes';
 import { videoGamesRoutes } from '../features/video-games/video-games.routes';
+import { StatisticsResolver } from '../features/statistics/resolvers/statistics.resolver';
 
 export const appRoutes: Routes = [
 
@@ -19,8 +19,10 @@ export const appRoutes: Routes = [
     },
     {
         path: 'stats',
-
-        loadChildren: () => import('../features/statistics/components/list-stats/statistics.routes').then(item => item.statisitcsRoutes)
+        loadChildren: () => import('../features/statistics/statistics.routes').then(item => item.statisitcsRoutes),
+        resolve: {
+            StatisticsResolver
+        }
     },
     {
         path: '**',

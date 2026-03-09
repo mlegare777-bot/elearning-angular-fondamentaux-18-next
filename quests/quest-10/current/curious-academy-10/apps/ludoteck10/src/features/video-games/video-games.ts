@@ -54,7 +54,7 @@ export class ListVideoGames implements OnInit, OnDestroy {
   ];
 
   toRemoveOneVideoGame(id: number): void {
-    console.info(id);
+    //   console.info(id);
     this.list.splice(id, 1);
   }
 

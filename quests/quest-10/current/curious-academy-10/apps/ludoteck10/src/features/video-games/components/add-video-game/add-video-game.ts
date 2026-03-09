@@ -20,9 +20,9 @@ export class AddVideoGame {
 
   save(): void {
 
-    console.info('valid:' + this.form()?.form.valid);
-    console.info('errors:' + this.form()?.form.controls['label'].errors);
-    console.info(this.videoGame);
+    //   console.info('valid:' + this.form()?.form.valid);
+    //   console.info('errors:' + this.form()?.form.controls['label'].errors);
+    //   console.info(this.videoGame);
   }
 
 }

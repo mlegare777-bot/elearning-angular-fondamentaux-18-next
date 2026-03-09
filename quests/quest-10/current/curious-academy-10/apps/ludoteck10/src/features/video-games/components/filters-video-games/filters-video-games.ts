@@ -18,7 +18,7 @@ export class FiltersVideoGames implements OnInit, OnDestroy {
 
   people$ = this.getAllPersonneApplicatif.getAll().pipe(
     filter(items => items.length > 0), //exemple de filter
-    tap(items => console.info(items)) //debug facile de mon nexts
+    // tap(items => console.info(items)) //debug facile de mon nexts
   );
 
   //on ne le voit pas, mais appel via un effect: donc appel suscribe dans cet effect
@@ -27,7 +27,7 @@ export class FiltersVideoGames implements OnInit, OnDestroy {
   ngOnInit(): void {
     const currentSubscription = this.people$.subscribe({
       next: items => {
-        console.info(items);
+        // console.info(items);
       }
     });
     this.subscription.add(currentSubscription);
