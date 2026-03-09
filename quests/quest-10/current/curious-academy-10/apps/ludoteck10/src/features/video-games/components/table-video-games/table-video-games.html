@@ -1,0 +1,19 @@
+<h3>{{title()}}</h3>
+<table>
+    <tbody>
+        @for (item of items(); track item.label) {
+        <tr>
+            <td>{{ item.label }}</td>
+            <td>{{ item.year }}</td>
+            <td>
+                <button (click)="clickToRemove($index)">Supprimer ({{$index}})</button>
+            </td>
+            <td>
+                <button (click)="clickToRemoveItem(item)">Supprimer ({{item.label}})</button>
+            </td>
+        </tr>        
+    }
+    </tbody>
+</table>
+
+

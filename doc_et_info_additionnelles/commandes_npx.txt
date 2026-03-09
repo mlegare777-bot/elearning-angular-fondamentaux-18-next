@@ -26,8 +26,10 @@ npm i  bootstrap
 
 
 --Pour creer un component:
- -- Aller dans "/src" 
+ -- Aller dans le repertoire "src" 
 npx nx g c shared/menus/main-menu
+ou un des sous-repertoires ex: "shared/menus"
+npx nx g c main-menu
  -- √ Which generator would you like to use? · @schematics/angular:component 
   -- Note : @schematics/angular:component is The default Angular CLI generator
   

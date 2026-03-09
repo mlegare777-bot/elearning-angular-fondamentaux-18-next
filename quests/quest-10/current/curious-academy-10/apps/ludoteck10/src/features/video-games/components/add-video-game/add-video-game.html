@@ -1,0 +1,48 @@
+<!-- eslint-disable @angular-eslint/template/label-has-associated-control -->
+<h1>Ajout d'un jeu video</h1>
+                
+
+<!-- todo - test pipe -->
+{{ videoGame | json}}
+<form #videoGameForm="ngForm" (ngSubmit)="save()">
+    <table>
+        <tr>
+            <td>
+                <label>Titre</label>
+            </td>
+            <td>
+                <input name="label" required type="text" [(ngModel)]="videoGame.label"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label>Annee de sortie</label>
+            </td>
+            <td>
+                <input name="year" required type="number" [(ngModel)]="videoGame.year"/>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <button [disabled]="!videoGameForm.form.valid" type="submit">Ajouter</button>
+
+
+
+            </td>
+        </tr>
+    </table>
+
+</form>
+
+<!-- <form>
+    <label>Titre</label>
+    <input name="label" required type="text" [(ngModel)]="videoGame.label"/>
+
+    <label>Annee de sortie</label>
+    <input name="year" required type="number" [(ngModel)]="videoGame.year"/>
+
+    <button (click)="save()">Ajouter</button>
+</form> -->
