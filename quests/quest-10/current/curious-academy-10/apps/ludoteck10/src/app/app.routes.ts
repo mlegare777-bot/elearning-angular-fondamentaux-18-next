@@ -21,7 +21,7 @@ export const appRoutes: Routes = [
         path: 'stats',
         loadChildren: () => import('../features/statistics/statistics.routes').then(item => item.statisitcsRoutes),
         resolve: {
-            StatisticsResolver
+            stats: StatisticsResolver
         }
     },
     {
