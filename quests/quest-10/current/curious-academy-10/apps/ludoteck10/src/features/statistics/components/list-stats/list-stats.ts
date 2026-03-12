@@ -21,11 +21,11 @@ export class ListStats implements OnInit {
   );
 
   protected readonly title$ = this.route.data.pipe(
-    map<{ [key: string | symbol]: any }, StatList>(data => data['title'])
+    map<{ [key: string | symbol]: any }, string>(data => data['title'])
   );
 
   protected readonly titleColor$ = this.route.data.pipe(
-    map<{ [key: string | symbol]: any }, StatList>(data => data['titleColor'])
+    map<{ [key: string | symbol]: any }, string>(data => data['titleColor'])
   );
 
 
