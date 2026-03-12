@@ -24,6 +24,11 @@ export class ListStats implements OnInit {
     map<{ [key: string | symbol]: any }, StatList>(data => data['title'])
   );
 
+  protected readonly titleColor$ = this.route.data.pipe(
+    map<{ [key: string | symbol]: any }, StatList>(data => data['titleColor'])
+  );
+
+
   ngOnInit(): void {
     this.stats$.subscribe(stats => {
       console.log(stats);

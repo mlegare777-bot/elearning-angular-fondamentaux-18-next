@@ -1,6 +1,7 @@
 @let statistics = stats$ | async;
+@let titleColor = titleColor$ | async;
 
-<H2>{{title$ | async}}</H2>
+<H2 [style.color]="titleColor" >{{title$ | async}}</H2>
 
 <table>
     <tr>
