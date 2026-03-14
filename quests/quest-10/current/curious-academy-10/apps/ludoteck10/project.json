@@ -19,7 +19,12 @@
             "input": "apps/ludoteck10/public"
           }
         ],
-        "styles": ["apps/ludoteck10/src/styles.css"]
+        "styles": [
+          "apps/ludoteck10/src/material-theme.scss",
+          "apps/ludoteck10/src/styles.css",
+          "apps/ludoteck10/src/styles2.css",
+          "node_modules/bootstrap/dist/css/bootstrap.min.css"
+        ]
       },
       "configurations": {
         "production": {

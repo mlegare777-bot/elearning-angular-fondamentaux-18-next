@@ -1,1 +1,21 @@
-<p>login works!</p>
+<!-- eslint-disable @angular-eslint/template/label-has-associated-control -->
+<h1>Connection de l'utilisateur</h1>
+            
+<form></form>
+
+ <mat-form-field>
+    <mat-label>Nom de l'utilisteur</mat-label>
+    <input matInput/>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <mat-form-field>
+    <mat-label>Enter your password</mat-label>
+    <input matInput type="password" />
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <button mat-button (click)="logIn()">Connexion</button>
+<BR>  
+<BR>  
+<BR>  
+<!-- todo - test pipe -->
+<!-- {{ utilisateurLogin | json}} -->

@@ -3,7 +3,7 @@
                 
 
 <!-- todo - test pipe -->
-{{ videoGame | json}}
+<!-- {{ videoGame | json}} -->
 <form #videoGameForm="ngForm" (ngSubmit)="save()">
     <table>
         <tr>
@@ -28,21 +28,9 @@
             </td>
             <td>
                 <button [disabled]="!videoGameForm.form.valid" type="submit">Ajouter</button>
-
-
-
             </td>
         </tr>
     </table>
 
 </form>
 
-<!-- <form>
-    <label>Titre</label>
-    <input name="label" required type="text" [(ngModel)]="videoGame.label"/>
-
-    <label>Annee de sortie</label>
-    <input name="year" required type="number" [(ngModel)]="videoGame.year"/>
-
-    <button (click)="save()">Ajouter</button>
-</form> -->

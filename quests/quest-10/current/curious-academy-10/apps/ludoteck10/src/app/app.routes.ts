@@ -3,6 +3,9 @@ import { NotFound } from '../shared/errors/not-found/not-found';
 import { videoGamesRoutes } from '../features/video-games/video-games.routes';
 import { StatisticsResolver } from '../features/statistics/resolvers/statistics.resolver';
 import { Title } from '@angular/platform-browser';
+import { Login } from '../features/authentification/component/login/login';
+import { requiredAuthenticatedGuard } from '../features/authentification/guards/required-authenticated-guard';
+import { authentificationRoutes } from '../features/authentification/authentification.route';
 
 export const appRoutes: Routes = [
 
@@ -15,7 +18,8 @@ export const appRoutes: Routes = [
     },
     {
         path: 'jeux-videos',
-        children: videoGamesRoutes
+        children: videoGamesRoutes,
+        canActivate: [requiredAuthenticatedGuard]
 
     },
     {
@@ -25,10 +29,12 @@ export const appRoutes: Routes = [
             title: 'Mes statistiques de jeux',
             titleColor: 'RED'
         },
+        canActivate: [requiredAuthenticatedGuard],
         resolve: {
             stats: StatisticsResolver
         }
     },
+    ...authentificationRoutes,
     {
         path: '**',
         component: NotFound
