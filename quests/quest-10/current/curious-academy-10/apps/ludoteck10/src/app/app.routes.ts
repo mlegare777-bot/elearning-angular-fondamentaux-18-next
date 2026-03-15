@@ -6,6 +6,7 @@ import { Title } from '@angular/platform-browser';
 import { Login } from '../features/authentification/component/login/login';
 import { requiredAuthenticatedGuard } from '../features/authentification/guards/required-authenticated-guard';
 import { authentificationRoutes } from '../features/authentification/authentification.route';
+import { getDynamicTitle } from '../shared/tools/routes/titles/dynamic-title';
 
 export const appRoutes: Routes = [
 
@@ -19,7 +20,9 @@ export const appRoutes: Routes = [
     {
         path: 'jeux-videos',
         children: videoGamesRoutes,
-        canActivate: [requiredAuthenticatedGuard]
+        // title: 'Mes jeux videos !!!!',
+        title: getDynamicTitle,
+        //     canActivate: [requiredAuthenticatedGuard]
 
     },
     {
