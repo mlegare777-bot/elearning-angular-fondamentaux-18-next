@@ -1,21 +1,20 @@
-import { Component, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, ViewEncapsulation } from '@angular/core';
 import { VideoGame, VideoGames } from './modele/video-game';
 import { TableVideoGames } from './components/table-video-games/table-video-games';
 import { FiltersVideoGames } from "./components/filters-video-games/filters-video-games";
 import { AddVideoGame } from './components/add-video-game/add-video-game';
+import { ActivatedRoute } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-list-video-games',
-  imports: [TableVideoGames, FiltersVideoGames, AddVideoGame],
+  imports: [AsyncPipe, TableVideoGames, FiltersVideoGames, AddVideoGame],
   templateUrl: './video-games.html',
   styleUrl: './video-games.css',
   encapsulation: ViewEncapsulation.None
 })
 export class ListVideoGames implements OnInit, OnDestroy {
-
-  ngOnInit(): void {
-    console.info('ListVideoGames :Init');
-  }
+  title$ = inject(ActivatedRoute).title;
 
   //  listTitle = 'Voici la liste des video-games';
   list: VideoGames = [
@@ -52,6 +51,13 @@ export class ListVideoGames implements OnInit, OnDestroy {
 
 
   ];
+
+
+
+
+  ngOnInit(): void {
+    console.info('ListVideoGames :Init');
+  }
 
   toRemoveOneVideoGame(id: number): void {
     //   console.info(id);
