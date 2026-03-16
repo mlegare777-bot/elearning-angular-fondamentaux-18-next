@@ -6,3 +6,16 @@
 <p>edit-video-game works : {{id}}</p>
 
 
+
+
+
+<p>
+  <mat-form-field appearance="fill">
+    <mat-label>Titre</mat-label>
+    <input matInput placeholder="Titre" [formControl]="titleFormControl">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+</p>
+
+
+<button matButton (click)="saveOne()">Save</button>

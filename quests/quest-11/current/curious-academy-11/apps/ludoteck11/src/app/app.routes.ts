@@ -22,7 +22,7 @@ export const appRoutes: Routes = [
         children: videoGamesRoutes,
         // title: 'Mes jeux videos !!!!',
         title: getDynamicTitle,
-        canActivate: [requiredAuthenticatedGuard]
+        //        canActivate: [requiredAuthenticatedGuard]
 
     },
     {
@@ -32,12 +32,12 @@ export const appRoutes: Routes = [
             title: 'Mes statistiques de jeux',
             titleColor: 'RED'
         },
-        canActivate: [requiredAuthenticatedGuard],
+        //     canActivate: [requiredAuthenticatedGuard],
         resolve: {
             stats: statsResolver
         }
     },
-    ...authentificationRoutes,
+    //   ...authentificationRoutes,
     {
         path: '**',
         component: NotFound

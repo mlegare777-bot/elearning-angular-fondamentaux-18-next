@@ -1,5 +1,6 @@
-import { Component, input, output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { VideoGame, VideoGames } from '../../modele/video-game';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-table-video-games',
@@ -8,6 +9,8 @@ import { VideoGame, VideoGames } from '../../modele/video-game';
   styleUrl: './table-video-games.css',
 })
 export class TableVideoGames {
+  private readonly router = inject(Router);
+
   items = input.required<VideoGames>();
   title = input.required<string>();
 
@@ -22,4 +25,7 @@ export class TableVideoGames {
     this.askToRemoveItem.emit(item);
   }
 
+  editOne(item: VideoGame): void {
+    this.router.navigate(['jeux-videos', item.id]);
+  }
 }

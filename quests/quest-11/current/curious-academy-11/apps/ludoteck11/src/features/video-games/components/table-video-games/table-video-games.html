@@ -6,7 +6,7 @@
             <td>{{ item.label }}</td>
             <td>{{ item.year }}</td>
             <td>
-                <button (click)="clickToRemove($index)">Supprimer ({{$index}})</button>
+                <button (click)="editOne(item)">Editer ({{item.label}})</button>
             </td>
             <td>
                 <button (click)="clickToRemoveItem(item)">Supprimer ({{item.label}})</button>
