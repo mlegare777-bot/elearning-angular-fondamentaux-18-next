@@ -1,4 +1,7 @@
-PS C:\Marc\programmation\formation_angualr-19-20\fondamentaux\dev\elearning-angular-fondamentaux-18-next\quests\quest-08\current> npx create-nx-workspace --preset=angular      
+--1-creation d'un nouveau projet avec workapace via npx (nx)
+
+PS C:\Marc\programmation\formation_angualr-19-20\fondamentaux\dev\elearning-angular-fondamentaux-18-next\quests\quest-08\current> 
+  npx create-nx-workspace --preset=angular      
 Need to install the following packages:
 create-nx-workspace@22.5.2
 Ok to proceed? (y) y
@@ -13,3 +16,28 @@ Ok to proceed? (y) y
 √ Which unit test runner would you like to use? · none
 √ Test runner to use for end to end (E2E) tests · cypress
 √ Which CI provider would you like to use? · github
+
+--2- Recuperer le code a partir d'un projet précédent:
+  --2.1-prendre les sources et config dans le projet precedent: (ex: ... quests\quest-10\current\curious-academy-10\apps\ludoteck10)
+    --folder "src" 
+	--fichier "project.json"
+  --2.2-Copier et ecraser dans le nouveau projet
+  --2.3-Dans les fichiers: Modifier tous les anciens nom de projet par le nouveaux (ex: remplacer les "ludoteck10" par "ludoteck11")
+  
+
+--3- Insallation des librairies communes:
+  --3.1-Installer material,cdk et animations
+	npm install @angular/material @angular/cdk @angular/animations
+  --3.2-Installer bootstrap
+	npm i  bootstrap    
+
+--4- Modifier le fichier de configuration "package.json" du workspace (ex: "curious-academy-11/package.json")
+  --ajouter la configuration pour le start de l'application
+    -- remplacer :
+	  "scripts": {},
+	-- par : 
+	  "scripts": {
+		"start": "npx nx serve ludoteck11" //ludoteck11 étant le nom du nouveau projet
+	  },
+
+-- faire un commit push dans GIT
