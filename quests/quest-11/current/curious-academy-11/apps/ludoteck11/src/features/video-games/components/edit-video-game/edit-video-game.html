@@ -6,7 +6,7 @@
 <p>edit-video-game works : {{id}}</p>
 
 
-<form [formGroup]="videoGameFormGroup">
+<form [formGroup]="videoGameFormGroup" (ngSubmit)="saveOne()">
 
 
 <p>
@@ -24,7 +24,7 @@
   </mat-form-field>
 </p>
 
-<button matButton (click)="saveOne()">Save</button>
+<button matButton>Save</button>
 
 
 </form>
