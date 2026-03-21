@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { MatFormField, MatLabel, MatHint } from "@angular/material/form-field";
 import { MatIcon } from "@angular/material/icon";
 import { MatInputModule } from '@angular/material/input';
+import { EditUpdateOneVideoGameService } from '../../services/edit-update-one-video-game-service';
+import { VideoGame } from '../../modele/video-game';
 
 @Component({
   selector: 'app-edit-video-game',
@@ -16,6 +18,7 @@ export class EditVideoGame implements OnInit {
 
   private readonly route = inject(ActivatedRoute);
 
+  private readonly updateOneService = inject(EditUpdateOneVideoGameService);
   private readonly formBuilder = inject(FormBuilder);
   protected readonly videoGameFormGroup = this.formBuilder.group({
     label: ['', [Validators.required, Validators.minLength(3)]],
@@ -42,7 +45,20 @@ export class EditVideoGame implements OnInit {
   }
 
   saveOne(): void {
-    console.log('saveOne', this.videoGameFormGroup.valid);
+    const videoGame: VideoGame = {
+      label: '',
+      year: 0
+    };
+
+    if (this.videoGameFormGroup.value.label) {
+      videoGame.label = this.videoGameFormGroup.value.label;
+    }
+    if (this.videoGameFormGroup.value.year) {
+      videoGame.year = this.videoGameFormGroup.value.year;
+    }
+
+
+    this.updateOneService.updateOne(videoGame).subscribe();
   }
 
 
