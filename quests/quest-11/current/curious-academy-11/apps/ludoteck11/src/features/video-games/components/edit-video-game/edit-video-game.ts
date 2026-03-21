@@ -20,7 +20,7 @@ export class EditVideoGame implements OnInit {
 
   private readonly updateOneService = inject(EditUpdateOneVideoGameService);
   private readonly formBuilder = inject(FormBuilder);
-  protected readonly videoGameFormGroup = this.formBuilder.group({
+  protected readonly videoGameFormGroup = this.formBuilder.nonNullable.group({
     label: ['', [Validators.required, Validators.minLength(3)]],
     year: [new Date().getFullYear(), [Validators.required, Validators.max(new Date().getFullYear())]]
   })
