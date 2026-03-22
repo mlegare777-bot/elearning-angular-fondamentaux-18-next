@@ -1,31 +1,37 @@
 
 
 @let id = videogameId();
-
+@let laoding = isLoading();
 
 <p>edit-video-game works : {{id}}</p>
 
 
-<form [formGroup]="videoGameFormGroup" (ngSubmit)="saveOne()">
+
+@if (laoding) {
+  <form [formGroup]="videoGameFormGroup" (ngSubmit)="saveOne()">
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Label</mat-label>
+      <input matInput placeholder="label" formControlName="label">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Annee de sortie</mat-label>
+      <input matInput placeholder="YYYY" formControlName="year">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+  </p>
+
+  <button [disabled]="! videoGameFormGroup.valid" matButton>Save</button>
 
 
-<p>
-  <mat-form-field appearance="fill">
-    <mat-label>Label</mat-label>
-    <input matInput placeholder="label" formControlName="label">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-  </mat-form-field>
-</p>
-<p>
-  <mat-form-field appearance="fill">
-    <mat-label>Annee de sortie</mat-label>
-    <input matInput placeholder="YYYY" formControlName="year">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-  </mat-form-field>
-</p>
+  </form>
+  
+}
 
-<button [disabled]="! videoGameFormGroup.valid" matButton>Save</button>
+@else {
+<i>Chargement en cours...</i>
 
-
-</form>
-
+}

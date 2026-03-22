@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnInit } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { EditUpdateOneVideoGameService } from '../../services/edit-update-one-video-game-service';
 import { VideoGame } from '../../modele/video-game';
 import { GetOneVideoGameService } from '../../services/get-one-video-game-service';
-import { map, switchMap } from 'rxjs';
+import { delay, map, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-edit-video-game',
@@ -23,14 +23,25 @@ export class EditVideoGame implements OnInit {
   private readonly getOneService = inject(GetOneVideoGameService);
   private readonly updateOneService = inject(EditUpdateOneVideoGameService);
 
+  protected readonly isLoading = signal(false);
+
   protected readonly setVideoGame$ = this.route.params.pipe(
+    delay(1000),
+
+    tap(() => this.isLoading.set(true)),
     map<{ [key: string | symbol]: any }, number>(params => params['id']),
-    switchMap(id => this.getOneService.getOne(id))
+    switchMap(id => this.getOneService.getOne(id)),
+    tap(() => this.isLoading.set(true))
   )
 
 
 
   private readonly formBuilder = inject(FormBuilder);
+
+
+
+
+
   protected readonly videoGameFormGroup = this.formBuilder.nonNullable.group({
     label: ['', [Validators.required, Validators.minLength(3)]],
     year: [new Date().getFullYear(), [Validators.required, Validators.max(new Date().getFullYear())]]
