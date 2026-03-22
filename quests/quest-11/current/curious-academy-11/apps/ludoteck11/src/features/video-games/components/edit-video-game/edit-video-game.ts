@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { EditUpdateOneVideoGameService } from '../../services/edit-update-one-video-game-service';
 import { VideoGame } from '../../modele/video-game';
 import { GetOneVideoGameService } from '../../services/get-one-video-game-service';
+import { map, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-edit-video-game',
@@ -44,14 +45,20 @@ export class EditVideoGame implements OnInit {
 
 
   ngOnInit(): void {
-    console.info('');//this.route.snapshot.params['id']);
+    console.info('id:' + this.route.snapshot.params['id']);
 
-    this.route.params.subscribe({
-      next: item => {
-        console.info(item['id']);
-      }
-    })
+    this.route.params.pipe(
+      map<{ [key: string | symbol]: any }, number>(params => params['id']),
+      switchMap(id => this.getOneService.getOne(id))
+    )
+      .subscribe({
+        next: item => {
+          this.videoGameFormGroup.patchValue(item)
+        }
+      })
+
   }
+
 
   saveOne(): void {
     const videoGame: VideoGame = {
