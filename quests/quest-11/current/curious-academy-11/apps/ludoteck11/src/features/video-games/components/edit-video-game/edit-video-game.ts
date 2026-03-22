@@ -20,8 +20,15 @@ export class EditVideoGame implements OnInit {
 
   private readonly route = inject(ActivatedRoute);
 
-  private readonly updateOneService = inject(EditUpdateOneVideoGameService);
   private readonly getOneService = inject(GetOneVideoGameService);
+  private readonly updateOneService = inject(EditUpdateOneVideoGameService);
+
+  protected readonly setVideoGame$ = this.route.params.pipe(
+    map<{ [key: string | symbol]: any }, number>(params => params['id']),
+    switchMap(id => this.getOneService.getOne(id))
+  )
+
+
 
   private readonly formBuilder = inject(FormBuilder);
   protected readonly videoGameFormGroup = this.formBuilder.nonNullable.group({
@@ -47,10 +54,7 @@ export class EditVideoGame implements OnInit {
   ngOnInit(): void {
     console.info('id:' + this.route.snapshot.params['id']);
 
-    this.route.params.pipe(
-      map<{ [key: string | symbol]: any }, number>(params => params['id']),
-      switchMap(id => this.getOneService.getOne(id))
-    )
+    this.setVideoGame$
       .subscribe({
         next: item => {
           this.videoGameFormGroup.patchValue(item)
