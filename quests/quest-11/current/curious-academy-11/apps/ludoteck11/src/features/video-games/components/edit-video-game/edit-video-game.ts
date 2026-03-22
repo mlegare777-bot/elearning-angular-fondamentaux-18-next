@@ -1,14 +1,15 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { MatFormField, MatLabel, MatHint } from "@angular/material/form-field";
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatFormField, MatLabel } from "@angular/material/form-field";
 import { MatIcon } from "@angular/material/icon";
 import { MatInputModule } from '@angular/material/input';
-import { EditUpdateOneVideoGameService } from '../../services/edit-update-one-video-game-service';
+import { ActivatedRoute } from '@angular/router';
+import { delay, tap } from 'rxjs';
+import { map, switchMap } from 'rxjs/operators';
 import { VideoGame } from '../../modele/video-game';
+import { EditUpdateOneVideoGameService } from '../../services/edit-update-one-video-game-service';
 import { GetOneVideoGameService } from '../../services/get-one-video-game-service';
-import { delay, map, switchMap, tap } from 'rxjs';
 
 @Component({
   selector: 'app-edit-video-game',
@@ -71,6 +72,15 @@ export class EditVideoGame implements OnInit {
           this.videoGameFormGroup.patchValue(item)
         }
       })
+
+
+
+    this.videoGameFormGroup.valueChanges.pipe(
+      delay(400)).subscribe({
+
+        next: (change: any) => console.info(change)
+      });
+
 
   }
 
