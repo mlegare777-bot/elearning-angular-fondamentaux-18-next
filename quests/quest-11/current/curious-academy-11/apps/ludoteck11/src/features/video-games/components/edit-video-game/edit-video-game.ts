@@ -1,12 +1,12 @@
 import { Component, computed, inject, OnInit, signal } from '@angular/core';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormField, MatLabel } from "@angular/material/form-field";
 import { MatIcon } from "@angular/material/icon";
 import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute } from '@angular/router';
 import { delay, tap } from 'rxjs';
-import { map, switchMap } from 'rxjs/operators';
+import { map, pairwise, switchMap } from 'rxjs/operators';
 import { VideoGame } from '../../modele/video-game';
 import { EditUpdateOneVideoGameService } from '../../services/edit-update-one-video-game-service';
 import { GetOneVideoGameService } from '../../services/get-one-video-game-service';
@@ -26,6 +26,15 @@ export class EditVideoGame implements OnInit {
 
   protected readonly isLoading = signal(false);
 
+  private readonly formBuilder = inject(FormBuilder);
+
+
+
+  protected readonly videoGameFormGroup = this.formBuilder.nonNullable.group({
+    label: ['', [Validators.required, Validators.minLength(3)]],
+    year: [new Date().getFullYear(), [Validators.required, Validators.max(new Date().getFullYear())]]
+  })
+
   protected readonly setVideoGame$ = this.route.params.pipe(
     delay(1000),
 
@@ -36,17 +45,12 @@ export class EditVideoGame implements OnInit {
   )
 
 
-
-  private readonly formBuilder = inject(FormBuilder);
-
-
-
+  protected readonly detectChanges$ = this.videoGameFormGroup.valueChanges.pipe(
+    pairwise(),
+    takeUntilDestroyed());
 
 
-  protected readonly videoGameFormGroup = this.formBuilder.nonNullable.group({
-    label: ['', [Validators.required, Validators.minLength(3)]],
-    year: [new Date().getFullYear(), [Validators.required, Validators.max(new Date().getFullYear())]]
-  })
+
 
 
   videoGameParams = toSignal(this.route.params);
@@ -75,10 +79,9 @@ export class EditVideoGame implements OnInit {
 
 
 
-    this.videoGameFormGroup.valueChanges.pipe(
-      delay(400)).subscribe({
-
-        next: (change: any) => console.info(change)
+    this.detectChanges$
+      .subscribe({
+        next: (change) => console.info(change)
       });
 
 
