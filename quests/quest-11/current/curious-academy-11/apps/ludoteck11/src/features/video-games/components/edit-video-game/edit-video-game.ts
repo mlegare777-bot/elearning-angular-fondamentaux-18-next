@@ -7,6 +7,7 @@ import { MatIcon } from "@angular/material/icon";
 import { MatInputModule } from '@angular/material/input';
 import { EditUpdateOneVideoGameService } from '../../services/edit-update-one-video-game-service';
 import { VideoGame } from '../../modele/video-game';
+import { GetOneVideoGameService } from '../../services/get-one-video-game-service';
 
 @Component({
   selector: 'app-edit-video-game',
@@ -19,6 +20,8 @@ export class EditVideoGame implements OnInit {
   private readonly route = inject(ActivatedRoute);
 
   private readonly updateOneService = inject(EditUpdateOneVideoGameService);
+  private readonly getOneService = inject(GetOneVideoGameService);
+
   private readonly formBuilder = inject(FormBuilder);
   protected readonly videoGameFormGroup = this.formBuilder.nonNullable.group({
     label: ['', [Validators.required, Validators.minLength(3)]],
@@ -42,6 +45,12 @@ export class EditVideoGame implements OnInit {
 
   ngOnInit(): void {
     console.info('');//this.route.snapshot.params['id']);
+
+    this.route.params.subscribe({
+      next: item => {
+        console.info(item['id']);
+      }
+    })
   }
 
   saveOne(): void {
