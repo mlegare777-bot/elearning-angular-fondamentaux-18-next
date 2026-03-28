@@ -1,0 +1,80 @@
+{
+  "name": "ludoteck12",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "apps/ludoteck12/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular/build:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/ludoteck12",
+        "browser": "apps/ludoteck12/src/main.ts",
+        "tsConfig": "apps/ludoteck12/tsconfig.app.json",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "apps/ludoteck12/public"
+          }
+        ],
+        "styles": [
+          "apps/ludoteck12/src/material-theme.scss",
+          "apps/ludoteck12/src/styles.css",
+          "apps/ludoteck12/src/styles2.css",
+          "node_modules/bootstrap/dist/css/bootstrap.min.css"
+        ]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "4kb",
+              "maximumError": "8kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@angular/build:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "ludoteck12:build:production"
+        },
+        "development": {
+          "buildTarget": "ludoteck12:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "ludoteck12:build",
+        "port": 4200,
+        "staticFilePath": "dist/apps/ludoteck12/browser",
+        "spa": true
+      }
+    }
+  }
+}

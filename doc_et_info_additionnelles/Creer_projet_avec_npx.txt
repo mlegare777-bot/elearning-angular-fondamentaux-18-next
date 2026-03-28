@@ -16,6 +16,8 @@ Ok to proceed? (y) y
 √ Which unit test runner would you like to use? · none
 √ Test runner to use for end to end (E2E) tests · cypress
 √ Which CI provider would you like to use? · github
+√ Connect to Nx Cloud? · yes
+√ Help improve Nx by sharing your usage data? · No
 
 --2- Recuperer le code a partir d'un projet précédent:
   --2.1-prendre les sources et config dans le projet precedent: (ex: ... quests\quest-10\current\curious-academy-10\apps\ludoteck10)
