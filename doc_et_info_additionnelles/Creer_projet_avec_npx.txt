@@ -27,7 +27,7 @@ Ok to proceed? (y) y
   --2.3-Dans les fichiers: Modifier tous les anciens nom de projet par le nouveaux (ex: remplacer les "ludoteck10" par "ludoteck11")
   
 
---3- Insallation des librairies communes:
+--3- Insallation des librairies communes: aller dans le worspace (ex: ... quests\quest-10\current\curious-academy-10\)
   --3.1-Installer material,cdk et animations
 	npm install @angular/material @angular/cdk @angular/animations
   --3.2-Installer bootstrap
@@ -42,4 +42,6 @@ Ok to proceed? (y) y
 		"start": "npx nx serve ludoteck11" //ludoteck11 étant le nom du nouveau projet
 	  },
 
--- faire un commit push dans GIT
+--5- tester : npm Start
+
+--6-  faire un commit+push dans GIT

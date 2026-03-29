@@ -1,0 +1,10 @@
+{
+  "name": "ludoteck13-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/ludoteck13-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["ludoteck13"],
+  "// targets": "to see all targets run: nx show project ludoteck13-e2e --web",
+  "targets": {}
+}
